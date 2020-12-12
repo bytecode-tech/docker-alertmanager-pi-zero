@@ -1,4 +1,4 @@
-FROM alpine:3.11
+FROM alpine:3.12
 
 ARG ARCHITECTURE=armv6
 ARG VERSION=0.21.0
