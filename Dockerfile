@@ -19,6 +19,6 @@ USER       nobody
 EXPOSE     9093
 VOLUME     [ "/alertmanager" ]
 WORKDIR    /alertmanager
-ENTRYPOINT [ "/bin/alertmanager" ]
-CMD        [ "--config.file=/etc/alertmanager/alertmanager.yml", \
+# ENTRYPOINT [ "/bin/alertmanager" ]
+CMD        [ "/bin/alertmanager", "--config.file=/etc/alertmanager/alertmanager.yml", \
              "--storage.path=/alertmanager" ]
