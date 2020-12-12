@@ -9,15 +9,15 @@ RUN apk --no-cache add --virtual build-dependencies wget ca-certificates && \
     apk del build-dependencies && \
     cd /tmp/install && \
     tar --strip-components=1 -xzf alertmanager.tar.gz && \
-    mkdir -p /etc/alertmanager /data/alertmanager && \
+    mkdir -p /etc/alertmanager /alertmanager && \
     mv alertmanager amtool /bin/ && \
     mv alertmanager.yml /etc/alertmanager/alertmanager.yml && \
     rm -rf /tmp/install && \
-    chown -R nobody:nogroup /etc/alertmanager /data/alertmanager
+    chown -R nobody:nogroup /etc/alertmanager /alertmanager
 
 USER       nobody
 EXPOSE     9093
-VOLUME     [ "/data" ]
+VOLUME     [ "/alertmanager" ]
 WORKDIR    /alertmanager
 ENTRYPOINT [ "/bin/alertmanager" ]
 CMD        [ "--config.file=/etc/alertmanager/alertmanager.yml", \
